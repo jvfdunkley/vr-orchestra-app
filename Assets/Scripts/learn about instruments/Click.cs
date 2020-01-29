@@ -54,7 +54,7 @@ public class Click : MonoBehaviour
         new_instr.tag = "Clone";
         Vector3 position = new Vector3(-342, -100, -20);
         new_instr.transform.position = position;
-        new_instr.transform.localScale = new Vector3(600, 600, 600);
+        new_instr.transform.localScale = new Vector3(800, 800, 800);
         new_instr.transform.SetParent(instrumentCanvas.transform, false);
         //set position and rotation to zero first 
         Text.SetText(gameObject.tag.ToUpper());
