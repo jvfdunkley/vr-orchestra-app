@@ -14,12 +14,12 @@ public class button : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Text = gameObject.transform.Find("Panel/menu_options/instrument_name_text").GetComponent<TextMeshProUGUI>();
-        parts_text = gameObject.transform.Find("Panel/menu_options/parts_of_instrument/example1").GetComponent<TextMeshProUGUI>();
-        hold_text = gameObject.transform.Find("Panel/menu_options/how_to_hold/example2").GetComponent<TextMeshProUGUI>();
-        hear_text = gameObject.transform.Find("Panel/menu_options/hear_the_instrument/example3").GetComponent<TextMeshProUGUI>();
-        learn_text = gameObject.transform.Find("Panel/menu_options/learn_about_instrument/example4").GetComponent<TextMeshProUGUI>();
-        play_text = gameObject.transform.Find("Panel/menu_options/play_the_instrument/example5").GetComponent<TextMeshProUGUI>();
+        Text = gameObject.transform.Find("Panel/instrument_name_text").GetComponent<TextMeshProUGUI>();
+        parts_text = gameObject.transform.Find("Panel/parts_of_instrument/example1").GetComponent<TextMeshProUGUI>();
+        hold_text = gameObject.transform.Find("Panel/how_to_hold/example2").GetComponent<TextMeshProUGUI>();
+        hear_text = gameObject.transform.Find("Panel/hear_the_instrument/example3").GetComponent<TextMeshProUGUI>();
+        learn_text = gameObject.transform.Find("Panel/learn_about_instrument/example4").GetComponent<TextMeshProUGUI>();
+        play_text = gameObject.transform.Find("Panel/play_the_instrument/example5").GetComponent<TextMeshProUGUI>();
 
     }
 

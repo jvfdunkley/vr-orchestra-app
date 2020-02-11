@@ -34,12 +34,12 @@ public class Click : MonoBehaviour
         //new_instr = Instantiate(instrument) as GameObject;
         //new_instr.SetActive(false);
         //This helped: https://answers.unity.com/questions/183649/how-to-find-a-child-gameobject-by-name.html
-        Text = instrumentCanvas.transform.Find("Panel/menu_options/instrument_name_text").GetComponent<TextMeshProUGUI>();
-        parts_text = instrumentCanvas.transform.Find("Panel/menu_options/parts_of_instrument/example1").GetComponent<TextMeshProUGUI>();
-        hold_text = instrumentCanvas.transform.Find("Panel/menu_options/how_to_hold/example2").GetComponent<TextMeshProUGUI>();
-        hear_text = instrumentCanvas.transform.Find("Panel/menu_options/hear_the_instrument/example3").GetComponent<TextMeshProUGUI>();
-        learn_text = instrumentCanvas.transform.Find("Panel/menu_options/learn_about_instrument/example4").GetComponent<TextMeshProUGUI>();
-        play_text = instrumentCanvas.transform.Find("Panel/menu_options/play_the_instrument/example5").GetComponent<TextMeshProUGUI>();
+        Text = instrumentCanvas.transform.Find("Panel/instrument_name_text").GetComponent<TextMeshProUGUI>();
+        parts_text = instrumentCanvas.transform.Find("Panel/parts_of_instrument/example1").GetComponent<TextMeshProUGUI>();
+        hold_text = instrumentCanvas.transform.Find("Panel/how_to_hold/example2").GetComponent<TextMeshProUGUI>();
+        hear_text = instrumentCanvas.transform.Find("Panel/hear_the_instrument/example3").GetComponent<TextMeshProUGUI>();
+        learn_text = instrumentCanvas.transform.Find("Panel/learn_about_instrument/example4").GetComponent<TextMeshProUGUI>();
+        play_text = instrumentCanvas.transform.Find("Panel/play_the_instrument/example5").GetComponent<TextMeshProUGUI>();
         //instrumentCanvas = instrumentCanvas.GetComponent<Canvas>();
 
     }
