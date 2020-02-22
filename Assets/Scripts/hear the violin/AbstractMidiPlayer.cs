@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using NAudio.Midi;
-public class MidiPlayer : MonoBehaviour
+public class AbstractMidiPlayer : MonoBehaviour
 {
+    //now I'm making it abstract to any midi song 
+    //The vivaldi concerto has 8 midi Events 
 
     //public objects
     public MidiFile midiFile;
-    public AudioSource song;
 
     //private objects
     private Animator pan_animation;
@@ -84,45 +85,19 @@ public class MidiPlayer : MonoBehaviour
     //solution for audio latency https://forum.unity.com/threads/audio-has-too-much-latency.499524/
     IEnumerator StartPlayback()
 	{
-            for(int i = 0; i < midiFile.Events[0].Count()-2; i++)
+        for(int j = 0; j < midiFile.Events.Count(); j++)
+        { 
+            Debug.Log("Midi Event #" + j);
+           for(int i = 0; i < midiFile.Events[j].Count(); i++)
             //foreach (MidiEvent note in midiFile.Events[0])
             {
-                MidiEvent note = midiFile.Events[0][i];
+                
+                MidiEvent note = midiFile.Events[j][i];
                 Debug.Log("note" + note);
-                MidiEvent nextNote = midiFile.Events[0][i+2];
-                //note velocity 
-                if (note.CommandCode == MidiCommandCode.NoteOn && !note.ToString().Contains("(Note Off)"))
-                {
-                    if(!nextNote.ToString().Contains("EndTrack"))
-                    {
-                        NoteOnEvent noe = (NoteOnEvent)note;
-                        NoteOnEvent nextNoe = (NoteOnEvent)nextNote;
-                        float convertedTime = 1;
-                        float bpm = 120;
-                        float time = (60 * noe.AbsoluteTime) / (bpm * deltaTicks);
-                        //Debug.Log("time: " + time);
-                        noteTime.Add(time);
-                        int indexOfTime = noteTime.FindIndex(element => element == time);
-                        if(indexOfTime != 0)
-                        {
-                            convertedTime = noteTime[indexOfTime] - noteTime[indexOfTime-1];
-                        }
-                        //Debug.Log("converted time: " + convertedTime);
-                        int noteNumber = noe.NoteNumber;
-                        string realNote = convertToNoteName(noteNumber);
-                        Debug.Log("Playing real note: " + realNote);
-                        string realNextNote = convertToNoteName(nextNoe.NoteNumber);
-                        //Debug.Log("Playing real next note: " + realNextNote);
-                        
-                        yield return new WaitForSeconds(convertedTime); //or convertedTime 0.9f
-                        IsOnCorrectString(realNote, realNextNote);
-                    }
                     //else yield return new WaitForSeconds(0.9f);
-                }
             }
-            //wait after last note is played
-            yield return new WaitForSeconds(0.9f); 
-            BowState("stop");
+        }
+        yield return null;
     }
     private string convertToNoteName(int noteNumber)
     {
@@ -159,32 +134,6 @@ public class MidiPlayer : MonoBehaviour
     {
         //Debug.Log("quaternion p2 euler " + p2.eulerAngles);
         this.transform.parent.rotation = Quaternion.Slerp(this.transform.parent.rotation, p2,  0.2f);
-    }
-
-    //SAVING THIS METHOD FOR LATER IN CASE I NEED TO USE IT AGAIN BUT RIGHT NOT NOT BEING USED
-    //help with Animation Events https://www.youtube.com/watch?v=3_ZFSZr-sJI
-    //https://gamedev.stackexchange.com/questions/117423/unity-detect-animations-end
-    public void BowState(string message)
-    {
-        // && pan_animation.GetBool("stop") != true
-        if(message == "down")
-        {
-            //Wait until Up is done Playing the play down
-            pan_animation.SetBool("up", false);
-            pan_animation.SetBool("down", true);
-        }
-        // && pan_animation.GetBool("stop") != true
-        else if(message == "up")
-        {
-            pan_animation.SetBool("down", false);
-            pan_animation.SetBool("up", true);
-        }
-
-        else 
-        {
-            //https://docs.unity3d.com/ScriptReference/AnimationState-enabled.html
-            pan_animation.enabled = false;
-        }
     }
 
 }
