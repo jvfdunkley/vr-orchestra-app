@@ -52,9 +52,12 @@ public class Click : MonoBehaviour
         Quaternion default_rotation = new Quaternion(0, 0, 0, 1);
         new_instr = Instantiate(gameObject, default_position, default_rotation) as GameObject;
         new_instr.tag = "Clone";
-        Vector3 position = new Vector3(-342, -100, -20);
+        //Vector3 position = new Vector3(-342, -100, -20);
+        Vector3 position = new Vector3(-226, -80, -20);
+        //41.48553 105
+        //-226 17 105
         new_instr.transform.position = position;
-        new_instr.transform.localScale = new Vector3(800, 800, 800);
+        new_instr.transform.localScale = new Vector3(700, 700, 700);
         new_instr.transform.SetParent(instrumentCanvas.transform, false);
         //set position and rotation to zero first 
         Text.SetText(gameObject.tag.ToUpper());

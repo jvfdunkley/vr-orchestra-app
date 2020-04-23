@@ -30,6 +30,11 @@ public class Main_menu : MonoBehaviour
         SceneManager.LoadScene("play_the_violin");
     }
 
+    public void Load_Accuracy_Note_Game()
+    {
+        SceneManager.LoadScene("accuracy_based_note_game");
+    }
+
     public void QuitGame()
     {
         Debug.Log("Quit!");

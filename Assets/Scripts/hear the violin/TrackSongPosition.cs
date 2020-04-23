@@ -60,12 +60,18 @@ public class TrackSongPosition : MonoBehaviour
         {
             completedLoops++;
         }
-
+        //else Debug.Log("beatsPerLoop" + beatsPerLoop);
+        //Debug.Log("beatsPerLoop " + beatsPerLoop);
         //This whole thing makes sure that the timing is in line with the song when the animation loops because there is
         //some offset between animation loops I think so this normalizes it 
-        loopPositionInBeats = songPositionInBeats - completedLoops * beatsPerLoop;
 
-        loopPositionInAnalog = loopPositionInBeats / beatsPerLoop;
+        //these things are messed up 
+        //I *DONT* WANT COMPLETED LOOPS TO BE FASTER THAN SONG BEATS
+        //so maybe this isn't the best way to do looping, or maybe make animation 0.25 seconds only
+            loopPositionInBeats = songPositionInBeats - completedLoops * beatsPerLoop;
 
+            loopPositionInAnalog = loopPositionInBeats / beatsPerLoop;
+    
+    
     }
 }

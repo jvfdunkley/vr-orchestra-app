@@ -22,7 +22,7 @@ public class MidiPlayer : MonoBehaviour
     
     void Start()
     {
-        midiFile = new MidiFile("Assets/vivconct.mid", false);
+        midiFile = new MidiFile("Assets/CmajorScaleOneOctave.mid", false);
         
         deltaTicks = midiFile.DeltaTicksPerQuarterNote;
 
@@ -47,6 +47,8 @@ public class MidiPlayer : MonoBehaviour
         noteStringTag.Add("F5", "E");
         noteStringTag.Add("G5", "E");
         noteStringTag.Add("A5", "E");
+        noteStringTag.Add("B5", "E");
+        noteStringTag.Add("C6", "E");
 
         //My issue is that I am trying to put normal Vector3 XYZ coordinates into a Quarternion when they don't do the same things 
         //TRANFORM.ROTATION IS W X Y Z NOT X Y Z W 
@@ -158,6 +160,9 @@ public class MidiPlayer : MonoBehaviour
     private void PlayAnimation(Quaternion p2)
     {
         //Debug.Log("quaternion p2 euler " + p2.eulerAngles);
+        //localRotation - use that 
+        //inspector - local 
+        //but this is in global 
         this.transform.parent.rotation = Quaternion.Slerp(this.transform.parent.rotation, p2,  0.2f);
     }
 
